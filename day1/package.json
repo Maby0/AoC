@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jasmine": "^3.10.0",
+    "jasmine-node": "^1.16.2"
+  }
+}
