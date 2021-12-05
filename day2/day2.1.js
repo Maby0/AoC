@@ -14,6 +14,4 @@ function movementCalc(array) {
     return [x, y, (x * y)]
 }
 
-console.log(movementCalc(arr))
-
 module.exports = { movementCalc }
