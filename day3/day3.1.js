@@ -18,6 +18,10 @@ function gammaRate(array) {
     return _checkPosNeg(binarr)
 }
 
+function binaryToDecimal(binStr) {
+    return parseInt(binStr, 2)
+}
+
 function _checkPosNeg(array) {
     return array.map(n => {
         if (parseInt(n) > 0) return "1"
@@ -25,6 +29,6 @@ function _checkPosNeg(array) {
     }).join("")
 }
 
-console.log(gammaRate(arr))
+console.log(binaryToDecimal(gammaRate(arr)))
 
-module.exports = { gammaRate }
+module.exports = { gammaRate, binaryToDecimal }
