@@ -65,7 +65,7 @@ describe('oxygenGeneratorRating', () => {
             },
             {
                 index: 1,
-                common: "0",
+                common: "1",
                 binary: ['01', '01', '01']
             }
         ])
