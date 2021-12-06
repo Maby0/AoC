@@ -27,9 +27,10 @@ function CO2ScrubberRating(array) {
         i++;
     }
     console.log(filterArr);
-    return filterArr[0]
+    return filterArr[0];
 }
 
 console.log(oxygenGeneratorRating(arr) + " = " + binaryToDecimal(oxygenGeneratorRating(arr)))
-
+console.log(CO2ScrubberRating(arr) + " = " + binaryToDecimal(CO2ScrubberRating(arr)))
+console.log(3597*1389)
 module.exports = { oxygenGeneratorRating, CO2ScrubberRating }
