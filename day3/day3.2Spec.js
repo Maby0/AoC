@@ -120,7 +120,7 @@ describe('CO2ScrubberRating', () => {
         ])
     })
 
-    it('returns values with 1 in right position if equally common', () => {
+    it('returns values with 0 in right position if equally common', () => {
         binArr = [
             "10",
             "10",
@@ -132,13 +132,13 @@ describe('CO2ScrubberRating', () => {
         expect(CO2ScrubberRating(binArr)).toEqual([
             {
                 index: 0,
-                leastCommon: "1",
-                binary: ['10', '10', '10']
+                leastCommon: "0",
+                binary: ['01', '01', '01']
             },
             {
                 index: 1,
-                leastCommon: "1",
-                binary: ['01', '01', '01']
+                leastCommon: "0",
+                binary: ['10', '10', '10']
             }
         ])
     })

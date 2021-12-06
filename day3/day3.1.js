@@ -48,8 +48,8 @@ function _checkPosNegGamma(array) {
 
 function _checkPosNegEpsilon(array) {
     return array.map(n => {
-        if (parseInt(n) > 0) return "0"
-        if (parseInt(n) <= 0) return "1"
+        if (parseInt(n) >= 0) return "0"
+        if (parseInt(n) < 0) return "1"
     }).join("")
 }
 
