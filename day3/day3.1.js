@@ -56,11 +56,11 @@ function _checkPosNegEpsilon(array) {
 let gammaRateCalc = gammaRate(arr)
 let epsilonRateCalc = epsilonRate(arr)
 
-console.log(gammaRateCalc)
-console.log(binaryToDecimal(gammaRate(arr)))
-console.log(epsilonRateCalc)
-console.log(binaryToDecimal(epsilonRate(arr)))
+// console.log(gammaRateCalc)
+// console.log(binaryToDecimal(gammaRate(arr)))
+// console.log(epsilonRateCalc)
+// console.log(binaryToDecimal(epsilonRate(arr)))
 
-console.log("FINAL ANSWER ==== " + binaryToDecimal(gammaRateCalc) * binaryToDecimal(epsilonRateCalc))
+// console.log("FINAL ANSWER ==== " + binaryToDecimal(gammaRateCalc) * binaryToDecimal(epsilonRateCalc))
 
 module.exports = { gammaRate, binaryToDecimal }
