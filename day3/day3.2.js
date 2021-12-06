@@ -1,41 +1,21 @@
 const fs = require('fs');
 const arr = fs.readFileSync('./data.txt').toString().split("\n")
-const { gammaRate, epsilonRate } = require('./day3.1')
+const { gammaRate, epsilonRate, binaryToDecimal } = require('./day3.1')
 
 function oxygenGeneratorRating(array) {
     let i = 0;
-    let objArr = [];
-    let avgArr = gammaRate(array).split("")
-    avgArr.forEach((avgBin) => {
-        objArr.push({
-            index: i,
-            common: avgArr[i],
-            binary: array.filter((binary) => {
-                return binary.charAt(i) === avgBin;
-            })
+    let filterArr = array;
+    while (filterArr.length !== 1) {
+        let avgBin = gammaRate(filterArr).split("")
+        filterArr = filterArr.filter(binary => {
+            return binary.charAt(i) === avgBin[i]
         })
-        i ++;
-    })
-    console.log(objArr)
-    return objArr
+        i++;
+    }
+    console.log(filterArr)
+    return filterArr[0]
 }
 
-function CO2ScrubberRating(array) {
-    let i = 0;
-    let objArr = [];
-    let avgArr = epsilonRate(array).split("")
-    avgArr.forEach((avgBin) => {
-        objArr.push({
-            index: i,
-            leastCommon: avgArr[i],
-            binary: array.filter((binary) => {
-                return binary.charAt(i) === avgBin;
-            })
-        })
-        i ++;
-    })
-    console.log(objArr)
-    return objArr
-}
+console.log(oxygenGeneratorRating(arr) + " = " + binaryToDecimal(oxygenGeneratorRating(arr)))
 
-module.exports = { oxygenGeneratorRating, CO2ScrubberRating }
+module.exports = { oxygenGeneratorRating }
