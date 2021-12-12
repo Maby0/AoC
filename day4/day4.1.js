@@ -18,6 +18,14 @@ function findNumberInBoards(sequence, boards) {
                 })
             })
         })
+        let row = checkIfRow(newSet)
+        let column = checkIfColumn(newSet)
+        if (row[0]) {
+            console.log(newSet[row[1]]) 
+        }
+        if (column[0]) {
+            console.log(newSet[column[1]])
+        }
     })
     return newSet
 }
@@ -27,13 +35,12 @@ function checkIfRow(boards) {
     let boardIndex = null;
     boards.forEach(board => {
         board.forEach(row => {
-            if (row.every(function(n) { return Number.isInteger(n)})) {
+            if (row.every(function(n) { return Number.isInteger(n) })) {
                 check = true;
                 boardIndex = boards.indexOf(board);
             }
         })
     })
-    console.log([check, boardIndex])
     return [check, boardIndex]
 }
 
@@ -56,7 +63,17 @@ function checkIfColumn(boards) {
     return [check, boardIndex];
 }
 
+function calculateScore(board, num) {
+    let counter = 0;
+    board.forEach(row => {
+        row.forEach(n => {
+            if (n === n.toString()) counter += parseInt(n);
+        })
+    })
+    return counter * num;
+}
+
 // console.log(nSeq)
 // console.log(boards)
-module.exports = { findNumberInBoards, checkIfRow, checkIfColumn }
+module.exports = { findNumberInBoards, checkIfRow, checkIfColumn, calculateScore }
 

@@ -1,5 +1,5 @@
 const { 
-    findNumberInBoards, checkIfRow, checkIfColumn 
+    findNumberInBoards, checkIfRow, checkIfColumn, calculateScore
 } = require('./day4.1')
 
 describe('findNumberInBoards', () => {
@@ -92,5 +92,13 @@ describe('checkIfColumn', () => {
             ]
         ]
         expect(checkIfColumn(boards)).toEqual([false, null])
+    })
+})
+
+describe('calculateScore', () => {
+    it('calculates the score of the board', () => {
+        let board = [[1, 2], ["3", "4"]]
+        let num = 2;
+        expect(calculateScore(board, num)).toEqual(14);
     })
 })
