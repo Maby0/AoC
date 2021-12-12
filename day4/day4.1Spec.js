@@ -39,7 +39,7 @@ describe('checkIfRow', () => {
                 ["3", "4"]
             ]
         ]
-        expect(checkIfRow(boards)).toEqual(true)
+        expect(checkIfRow(boards)).toEqual([true, 0])
     })
 
     it('returns true if a row is all ints', () => {
@@ -49,7 +49,7 @@ describe('checkIfRow', () => {
                 [3, 4]
             ]
         ]
-        expect(checkIfRow(boards)).toEqual(true)
+        expect(checkIfRow(boards)).toEqual([true, 0])
     })
 
     it('returns false if no row is all ints', () => {
@@ -59,7 +59,7 @@ describe('checkIfRow', () => {
                 ["3", "4"]
             ]
         ]
-        expect(checkIfRow(boards)).toEqual(false)
+        expect(checkIfRow(boards)).toEqual([false, null])
     })
 })
 
@@ -71,7 +71,7 @@ describe('checkIfColumn', () => {
                 [3, "4"]
             ]
         ]
-        expect(checkIfColumn(boards)).toEqual(true)
+        expect(checkIfColumn(boards)).toEqual([true, 0])
     })
 
     it('returns true if a column is all ints', () => {
@@ -81,7 +81,7 @@ describe('checkIfColumn', () => {
                 ["3", 4]
             ]
         ]
-        expect(checkIfColumn(boards)).toEqual(true)
+        expect(checkIfColumn(boards)).toEqual([true, 0])
     })
 
     it('returns false if no column is all ints', () => {
@@ -91,6 +91,6 @@ describe('checkIfColumn', () => {
                 ["3", "4"]
             ]
         ]
-        expect(checkIfColumn(boards)).toEqual(false)
+        expect(checkIfColumn(boards)).toEqual([false, null])
     })
 })

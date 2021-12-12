@@ -24,16 +24,22 @@ function findNumberInBoards(sequence, boards) {
 
 function checkIfRow(boards) {
     let check = false;
+    let boardIndex = null;
     boards.forEach(board => {
         board.forEach(row => {
-            if (row.every(function(n) { return Number.isInteger(n)})) check = true;
+            if (row.every(function(n) { return Number.isInteger(n)})) {
+                check = true;
+                boardIndex = boards.indexOf(board);
+            }
         })
     })
-    return check
+    console.log([check, boardIndex])
+    return [check, boardIndex]
 }
 
 function checkIfColumn(boards) {
     let check = false;
+    let boardIndex = null;
     let checkArr;
     boards.forEach(board => {
         for (i = 0; i < board[0].length; i++) {
@@ -41,10 +47,13 @@ function checkIfColumn(boards) {
             board.forEach(row => {
                 checkArr.push(Number.isInteger(row[i]))
             })
-            if (checkArr.every(el => el === true)) check = true;
+            if (checkArr.every(el => el === true)) {
+                check = true;
+                boardIndex = boards.indexOf(board)
+            }
         }
     })
-    return check;
+    return [check, boardIndex];
 }
 
 // console.log(nSeq)
