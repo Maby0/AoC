@@ -32,7 +32,22 @@ function checkIfRow(boards) {
     return check
 }
 
+function checkIfColumn(boards) {
+    let check = false;
+    let checkArr;
+    boards.forEach(board => {
+        for (i = 0; i < board[0].length; i++) {
+            checkArr = [];
+            board.forEach(row => {
+                checkArr.push(Number.isInteger(row[i]))
+            })
+            if (checkArr.every(el => el === true)) check = true;
+        }
+    })
+    return check;
+}
+
 // console.log(nSeq)
 // console.log(boards)
-module.exports = { findNumberInBoards, checkIfRow }
+module.exports = { findNumberInBoards, checkIfRow, checkIfColumn }
 

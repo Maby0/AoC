@@ -1,4 +1,6 @@
-const { findNumberInBoards, checkIfRow } = require('./day4.1')
+const { 
+    findNumberInBoards, checkIfRow, checkIfColumn 
+} = require('./day4.1')
 
 describe('findNumberInBoards', () => {
     let board1 = [
@@ -51,14 +53,24 @@ describe('checkIfRow', () => {
     })
 })
 
-// describe('checkIfColumn', () => {
-//     it('returns true if a column is all ints', () => {
-//         let boards = [
-//             [
-//                 [1, "2"],
-//                 [3, "4"]
-//             ]
-//         ]
-//         expect(checkIfColumn(boards)).toEqual(true)
-//     })
-// })
+describe('checkIfColumn', () => {
+    it('returns true if a column is all ints', () => {
+        let boards = [
+            [
+                [1, "2"],
+                [3, "4"]
+            ]
+        ]
+        expect(checkIfColumn(boards)).toEqual(true)
+    })
+
+    it('returns true if a column is all ints', () => {
+        let boards = [
+            [
+                [1, "2"],
+                ["3", "4"]
+            ]
+        ]
+        expect(checkIfColumn(boards)).toEqual(false)
+    })
+})
