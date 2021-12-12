@@ -1,16 +1,21 @@
 const fs = require('fs')
 const nSeq = fs.readFileSync('./data.txt').toString().split("\n").shift().split(",");
 const boards = fs.readFileSync('./data.txt').toString().split("\n\n").slice(1).map(board => {
-    return board.split("\n").map((row) => row.split(" ")).map(n => n)
+    return board.split("\n").map((row) => {
+        return row.replace(/\s+/g,' ').trim().split(" ")
+    })
 })
+console.log(boards)
+console.log(nSeq)
 
 function findNumberInBoards(sequence, boards) {
     let newSet = boards;
-    sequence.forEach(number => {
+    let score;
+    for (let i = 0; i < sequence.length; i++) {
         newSet = newSet.map(board => {
             return board.map(row => {
                 return row.map(n => {
-                    if (n === number) {
+                    if (n === sequence[i]) {
                         return parseInt(n);
                     } else {
                         return n
@@ -21,13 +26,14 @@ function findNumberInBoards(sequence, boards) {
         let row = checkIfRow(newSet)
         let column = checkIfColumn(newSet)
         if (row[0]) {
-            console.log(newSet[row[1]]) 
+            score = calculateScore(newSet[row[1]], sequence[i])
+            break;
+        } else if (column[0]) {
+            score = calculateScore(newSet[column[1]], sequence[i])
+            break;
         }
-        if (column[0]) {
-            console.log(newSet[column[1]])
-        }
-    })
-    return newSet
+    }
+    return score
 }
 
 function checkIfRow(boards) {
@@ -73,7 +79,7 @@ function calculateScore(board, num) {
     return counter * num;
 }
 
-// console.log(nSeq)
-// console.log(boards)
+console.log(findNumberInBoards(nSeq, boards))
+
 module.exports = { findNumberInBoards, checkIfRow, checkIfColumn, calculateScore }
 
