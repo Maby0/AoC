@@ -5,7 +5,6 @@ const boards = fs.readFileSync('./data.txt').toString().split("\n\n").slice(1).m
 })
 
 function findNumberInBoards(sequence, boards) {
-    let i = 0;
     let newSet = boards;
     sequence.forEach(number => {
         newSet = newSet.map(board => {
@@ -20,11 +19,20 @@ function findNumberInBoards(sequence, boards) {
             })
         })
     })
-    console.log(newSet)
     return newSet
+}
+
+function checkIfRow(boards) {
+    let check = false;
+    boards.forEach(board => {
+        board.forEach(row => {
+            if (row.every(function(n) { return Number.isInteger(n)})) check = true;
+        })
+    })
+    return check
 }
 
 // console.log(nSeq)
 // console.log(boards)
-module.exports = { findNumberInBoards }
+module.exports = { findNumberInBoards, checkIfRow }
 
