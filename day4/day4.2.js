@@ -5,6 +5,7 @@ const boards = fs.readFileSync('./data.txt').toString().split("\n\n").slice(1).m
         return row.replace(/\s+/g,' ').trim().split(" ")
     })
 })
+console.log("THIS IS HOW MANY BOARDS THERE ARE" + boards.length)
 
 function findNumberInBoards(sequence, boards) {
     let newSet = boards;
@@ -25,14 +26,12 @@ function findNumberInBoards(sequence, boards) {
         let row = checkIfRow(newSet)
         let column = checkIfColumn(newSet)
         row.forEach(winningBoard => {
-            console.log("I GET HERE")
             if (winningBoard.win && !winArr.some(winners => winners.boardIndex === winningBoard.boardIndex)) {
                 score = calculateScore(newSet[winningBoard.boardIndex], sequence[i])
                 winArr.push({boardIndex: winningBoard.boardIndex, boardScore: score})
             }
         })
         column.forEach(winningBoard => {
-            console.log("I GET HERE TOO")
             if (winningBoard.win && !winArr.some(winners => winners.boardIndex === winningBoard.boardIndex)) {
                 score = calculateScore(newSet[winningBoard.boardIndex], sequence[i])
                 winArr.push({boardIndex: winningBoard.boardIndex, boardScore: score})
@@ -40,7 +39,7 @@ function findNumberInBoards(sequence, boards) {
         })
         
     }
-    console.log(winArr)
+    console.log("THIS IS HOW MANY ARRAYS GET RETURNED" + winArr.length)
     return winArr
 }
 
@@ -57,7 +56,6 @@ function checkIfRow(boards) {
             }
         })
     })
-    console.log(winningBoards)
     return winningBoards
 }
 
@@ -92,7 +90,7 @@ function calculateScore(board, num) {
     return counter * num;
 }
 
-// console.log(findNumberInBoards(nSeq, boards))
+console.log(findNumberInBoards(nSeq, boards))
 
 module.exports = { findNumberInBoards, checkIfRow, checkIfColumn, calculateScore }
 
